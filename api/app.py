@@ -1,5 +1,6 @@
 from flask import render_template, redirect, url_for, Flask, request
-from encdoer_and_decoder import ENC_AND_DEC
+from encoder_and_decoder import ENC_AND_DEC
+
 
 app = Flask(__name__)
 cipher = ENC_AND_DEC()
