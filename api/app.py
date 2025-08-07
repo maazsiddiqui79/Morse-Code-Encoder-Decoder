@@ -1,6 +1,6 @@
 # api/app.py
 
-from flask import render_template, redirect, url_for, Flask, request
+from flask import render_template, redirect, url_for, Flask, request,flash
 
 
 
@@ -37,6 +37,7 @@ class ENC_AND_DEC:
 
 app = Flask(__name__)
 cipher = ENC_AND_DEC()
+app.secret_key = 'your_secret_key_here'
 
 MORSE_CODE = {
     'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
@@ -112,9 +113,12 @@ def text_shifter_encode():
     if request.method == 'POST':
         text = request.form.get('plain-text')
         shifter = request.form.get('num')
-        enc_code = cipher.encrypt(og_txt=text, shift=shifter)
-        print(enc_code)
-        return render_template('txt_shifter.html', code=code, enc_code=enc_code)
+        try:
+            enc_code = cipher.encrypt(og_txt=text, shift=shifter)
+            print(enc_code)
+            return render_template('txt_shifter.html', code=code, enc_code=enc_code)
+        except:
+            flash('❌ Please enter a valid secret text and a shift number (0 or more)',"danger")
 
     return render_template('txt_shifter.html', code=code)
 
@@ -124,9 +128,12 @@ def text_shifter_decode():
     if request.method == 'POST':
         text = request.form.get('plain-text')
         shifter = request.form.get('num')
-        enc_code = cipher.decrypt(og_txt=text, shift=shifter)
-        print(enc_code)
-        return render_template('txt_shifter.html', code=code, enc_code=enc_code)
+        try:
+            enc_code = cipher.decrypt(og_txt=text, shift=shifter)
+            print(enc_code)
+            return render_template('txt_shifter.html', code=code, enc_code=enc_code)
+        except:
+            flash('❌ Please enter a valid secret text and a shift number (0 or more)',"danger")
 
     return render_template('txt_shifter.html', code=code)
 

@@ -386,6 +386,91 @@
         </table>
       </div>
     </div>
+
+    <!--  -->
+    <div class="container my-5">
+  <h2 class="fw-bold text-center mb-4" style="font-size: 2rem">📘 Text Shifter Documentation</h2>
+
+  <!-- Purpose -->
+  <div class="mb-4">
+    <h4 class="text-success">🔍 What is Text Shifter?</h4>
+    <p>
+      Text Shifter is a simple and fun encryption tool that uses a basic Caesar Cipher technique.
+      You enter any text (including letters, numbers, symbols, and spaces), provide a secret number
+      (shift value), and the tool will return an encrypted message by shifting each character's
+      Unicode/ASCII code by the specified number.
+    </p>
+  </div>
+
+  <!-- How to Use -->
+  <div class="mb-4">
+    <h4 class="text-primary">⚙️ How to Use</h4>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <strong>1.</strong> Enter your message in the <strong>Secret Text</strong> field.
+      </li>
+      <li class="list-group-item">
+        <strong>2.</strong> Enter a number (e.g., 1 to 100) in the <strong>Secret Number</strong> field.
+      </li>
+      <li class="list-group-item">
+        <strong>3.</strong> Click the <code>Encrypt Message</code> button to generate the encrypted output.
+      </li>
+      <li class="list-group-item">
+        <strong>4.</strong> Share the encrypted message along with the number to allow decryption.
+      </li>
+    </ul>
+  </div>
+
+  <!-- Allowed Characters -->
+  <div class="mb-4">
+    <h4 class="text-success">✅ Allowed Input</h4>
+    <ul>
+      <li>Uppercase and lowercase letters (A–Z, a–z)</li>
+      <li>Numbers (0–9)</li>
+      <li>Spaces</li>
+      <li>Special symbols: ! @ # $ % ^ & * ( ) _ + - = { } [ ] | \ : ; " ' < > , . ? /</li>
+      <li>Emojis and Unicode characters</li>
+    </ul>
+  </div>
+
+  <!-- Example -->
+  <div class="mb-4">
+    <h4 class="text-info">🧪 Example</h4>
+    <table class="table table-bordered text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Secret Text</th>
+          <th>Secret Number</th>
+          <th>Encrypted Output</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hello123!</td>
+          <td>1</td>
+          <td>Ifmmp234"</td>
+        </tr>
+        <tr>
+          <td>Secret@#Text</td>
+          <td>3</td>
+          <td>VhfuhwC%Whaw</td>
+        </tr>
+        <tr>
+          <td>💡Encrypt🔐Me</td>
+          <td>2</td>
+          <td>💢Gpetyrv🔒Og</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Note -->
+  <div class="alert alert-warning" role="alert">
+    📌 <strong>Note:</strong> This tool shifts characters based on their ASCII/Unicode values. It supports all characters,
+    but encrypted output may include unreadable or non-printable symbols if very high shift values are used.
+  </div>
+</div>
+
   </body>
 
   <footer
@@ -430,12 +515,3 @@
     </p>
   </footer>
 </html>
-
-<!-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-    <li class="ms-3">
-        <a class="text-body-secondary" href="#" aria-label="Instagram"></a>
-    </li>
-    <li class="ms-3">
-        <a class="text-body-secondary" href="#" aria-label="Facebook"></a>
-    </li>
-</ul> -->
