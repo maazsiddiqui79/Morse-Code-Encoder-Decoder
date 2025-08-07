@@ -1,6 +1,8 @@
 from flask import render_template, redirect, url_for, Flask, request
+from encdoer_and_decoder import ENC_AND_DEC
 
 app = Flask(__name__)
+cipher = ENC_AND_DEC()
 
 MORSE_CODE = {
     # Letters
@@ -72,6 +74,43 @@ def morse_to_text():
         return render_template('morse_to_text.html', morse_text=TEXT)
 
     return render_template('morse_to_text.html')
+
+
+@app.route('/text-shifter', methods=['GET', 'POST'])
+def text_shifter():
+    code = 'encode'
+    
+    return render_template('txt_shifter.html',code=code)
+
+@app.route('/text-shifter-encooder', methods=['GET', 'POST'])
+def text_shifter_encode():
+    code = 'encode'
+    if request.method == 'POST':
+        text = request.form.get('plain-text')
+        shifter = request.form.get('num')
+        enc_code =cipher.encrypt(og_txt=text,shift=shifter)
+        print(enc_code)
+        
+        return render_template('txt_shifter.html',code=code , enc_code=enc_code)
+        
+    
+    return render_template('txt_shifter.html',code=code)
+
+@app.route('/text-shifter-decoder', methods=['GET', 'POST'])
+def text_shifter_decode():
+    code = 'decode'
+    if request.method == 'POST':
+        text = request.form.get('plain-text')
+        shifter = request.form.get('num')
+        enc_code =cipher.decrypt(og_txt=text,shift=shifter)
+        print(enc_code)
+        
+        return render_template('txt_shifter.html',code=code , enc_code=enc_code)
+    
+    
+    return render_template('txt_shifter.html',code=code)
+
+
 
 
 if __name__ == '__main__':

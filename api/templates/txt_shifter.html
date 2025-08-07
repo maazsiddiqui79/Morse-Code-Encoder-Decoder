@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+        crossorigin="anonymous"></script>
+
+    <style>
+        .inline-light:hover {
+            display: inline-block;
+            background-color: #f8f9fa;
+            color: #000;
+        }
+
+        .ip {
+            border: none;
+            border-top: 1px solid #000;
+            border-bottom: 1px solid #000;
+        }
+
+        .boxx {
+            padding: 14px;
+        }
+
+        @media (max-width: 767px) {
+            textarea.ip {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/"
+                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+                <img class="d-block mx-auto mb-4" src="{{url_for('static',filename='morse-code.png')}}" alt=""
+                    width="39" height="37" />
+            </a>
+            <h1 class="d-block mx-auto mb-4">Text Shifter</h1>
+            <ul class="nav nav-pills">
+                
+                
+                {% if code =="encode" %}
+                <li>
+                    <a class="btn btn-dark btn-outline-light ms-3" href="/text-shifter-encooder" >ENCODER</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="btn btn-outline-dark ms-3" href="/text-shifter-encooder" >ENCODER</a>
+                </li>
+                
+                {% endif %}
+
+                {% if code =="decode" %}
+                <li>
+                    <a class="btn btn-dark btn-outline-light ms-3" href="/text-shifter-decoder" >DECODER</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="btn btn-outline-dark ms-3" href="/text-shifter-decoder" >DECODER</a>
+                </li>
+                
+                {% endif %}
+                
+            </ul>
+        </header>
+    </div>
+
+    {% if code =='encode' %}
+    <div class="container">
+    <div class="row g-4">
+        <div class="col-12 bg-body-white border rounded-3" style="box-shadow: 3px 4px 22px rgba(0, 0, 1, 0.3);">
+            <form action="/text-shifter-encooder" method="post" class="boxx p-3">
+                <div class="row">
+                    <!-- Textarea Section -->
+                    <div class="col-md-6 col-12 mb-3">
+                        <h3>Text</h3>
+                        <hr />
+                        <textarea class="ip" name="plain-text" style="resize: none; width: 100%;" cols="83" rows="10"
+                            placeholder="Enter your Plain Text"></textarea>
+                    </div>
+
+                    <!-- Shift Number Section -->
+                    <div class="col-md-6 col-12 mb-3">
+                        <h3>Shift Number</h3>
+                        <hr />
+                        <input type="number" placeholder="eg : 6" class="ip w-100" name="num">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <input type="submit" value="Convert" class="btn btn-dark mt-3" />
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="col-12 mt-5">
+        <div class="bg-body-white border rounded-3" style="box-shadow: 3px 4px 22px rgba(0, 0, 1, 0.3);">
+            <div class="boxx">
+                <h3>Message</h3>
+                <hr />
+                <p id="morseText">{{enc_code}}</p>
+                <button onclick="copyText()" class="btn btn-outline-secondary mt-2">Copy</button>
+            </div>
+        </div>
+    </div>  
+    </div>
+
+
+        {% elif code =='decode' %}
+    <div class="container">
+    <div class="row g-4">
+        <div class="col-12 bg-body-white border rounded-3" style="box-shadow: 3px 4px 22px rgba(0, 0, 1, 0.3);">
+            <form action="/text-shifter-decoder" method="post" class="boxx p-3">
+                <div class="row">
+                    <!-- Textarea Section -->
+                    <div class="col-md-6 col-12 mb-3">
+                        <h3>Encrypted Message</h3>
+                        <hr />
+                        <textarea class="ip" name="plain-text" style="resize: none; width: 100%;" cols="83" rows="10"
+                            placeholder="Enter your Plain Text"></textarea>
+                    </div>
+
+                    <!-- Shift Number Section -->
+                    <div class="col-md-6 col-12 mb-3">
+                        <h3>Shift Number</h3>
+                        <hr />
+                        <input type="number" placeholder="eg : 6" class="ip w-100" name="num">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <input type="submit" value="Convert" class="btn btn-dark mt-3" />
+            </form>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="col-12 mt-5">
+        <div class="bg-body-white border rounded-3" style="box-shadow: 3px 4px 22px rgba(0, 0, 1, 0.3);">
+            <div class="boxx">
+                <h3>Text</h3>
+                <hr />
+                <p id="morseText">{{enc_code}}</p>
+                <button onclick="copyText()" class="btn btn-outline-secondary mt-2">Copy</button>
+            </div>
+        </div>
+    </div>  
+    </div>
+
+
+
+    {% endif %}
+
+
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 mt-5 border-top">
+        <div class="col-md-6 d-flex align-items-center">
+            <img src="{{ url_for('static', filename='morse-code.png') }}" alt="Logo" width="39" height="37"
+                class="me-2" />
+            <span class="text-body-secondary">© 2025 Morse Code Translator | Built by <em>Maaz Siddiqui</em></span>
+        </div>
+        <div class="col-md-6 text-end">
+            <a class="text-decoration-none me-3" href="https://www.linkedin.com/in/siddiqui-maazzz/">LinkedIn</a> |
+            <a class="text-decoration-none me-3" href="https://github.com/maazsiddiqui79">GitHub</a> |
+            <a class="text-decoration-none me-2" href="tel:+918850281310">+91 88502 81310</a> |
+            <a class="text-decoration-none" href="https://the-maaz-portfolio.onrender.com/">Portfolio</a>
+        </div>
+    </footer>
+
+    <script>
+        function copyText() {
+            const text = document.getElementById("morseText").innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert("Text copied to clipboard!");
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+    </script>
+</body>
+
+</html>

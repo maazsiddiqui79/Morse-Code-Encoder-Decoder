@@ -23,7 +23,7 @@
     />
 
     <style>
-        footer {
+      footer {
         height: 80px;
         width: 100%;
         bottom: 0;
@@ -40,11 +40,33 @@
         font-weight: bold;
       }
     </style>
-
-
   </head>
 
   <body>
+    <header
+      class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+    >
+      <a
+        href="/"
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none"
+      >
+        <img
+        class="d-block m-4"
+        src="{{url_for('static',filename='morse-code.png')}}"
+        alt=""
+        width="30"
+        height="30"
+      />
+        <span class="fs-4" style="font-family:Verdana, Geneva, Tahoma, sans-serif;">MORSE ENCODER & DECODER</span>
+      </a>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <a href="#" class="btn btn-outline-dark m-2 active" aria-current="page">Morse code</a>
+        </li>
+        <li ><a class="btn btn-outline-dark m-2" href="/text-shifter" >TextShifter</a></li>
+      </ul>
+    </header>
+
     <div class="px-4 py-5 my-5 text-center">
       <img
         class="d-block mx-auto mb-4"
@@ -86,8 +108,7 @@
       <div class="modal-body p-5 bg-red">
         <h2 class="fw-bold mb-0 text-center fs-1">Morse-Codes</h2>
 
-        <table
-          class="table table-borderless text-start">
+        <table class="table table-borderless text-start">
           <tr>
             <th>Character</th>
             <th>Morse Code</th>
@@ -176,8 +197,7 @@
 
         <hr />
 
-        <table
-          class="table table-borderless text-start">
+        <table class="table table-borderless text-start">
           <tr>
             <th>Number</th>
             <th>Morse Code</th>
@@ -351,54 +371,64 @@
               <td>-.-. .- -</td>
             </tr>
             <tr>
-                <td>GOOD DAY</td>
-                <td>--. --- --- -.. / -.. .- -.--</td>
+              <td>GOOD DAY</td>
+              <td>--. --- --- -.. / -.. .- -.--</td>
             </tr>
             <tr>
-                <td>SAVE ME</td>
-                <td>... .- ...- . / -- .</td>
+              <td>SAVE ME</td>
+              <td>... .- ...- . / -- .</td>
             </tr>
             <tr>
-                <td>I AM HERE</td>
-                <td>.. / .- -- / .... . .-. .</td>
+              <td>I AM HERE</td>
+              <td>.. / .- -- / .... . .-. .</td>
             </tr>
-        </tbody>
-    </table>
-</div>
-</div>
-</body>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
 
-  
-<footer
-class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 border-top"
->
-      <div class="col-md-4 d-flex align-items-center">
-          <a
-          href="/"
-          class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
-          aria-label="Bootstrap"
-          >
-          <img
+  <footer
+    class="d-flex flex-wrap justify-content-between align-items-center py-3 px-4 border-top"
+  >
+    <div class="col-md-4 d-flex align-items-center">
+      <a
+        href="/"
+        class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+        aria-label="Bootstrap"
+      >
+        <img
           class="d-block mx-auto mb-4"
           src="{{url_for('static',filename='morse-code.png')}}"
           alt=""
           width="39"
           height="37"
-          />
-        </a>
-        <span class="mb-3 mb-md-0 text-body-secondary">© 2025 Morse Code Translator| Built By <em>Maaz Siddiqui</em></span>
-        </div>
-        <p>
-            <a class="nav-link-footer me-2" href="https://www.linkedin.com/in/siddiqui-maazzz/">LinkedIn</a>
-            |
-            <a class="nav-link-footer me-2" href="https://the-maaz-portfolio.onrender.com/">Portfolio</a>
-            |
-            <a class="nav-link-footer me-2" href="https://github.com/maazsiddiqui79">GitHub</a>
-            |
-            <a class="nav-link-footer" href="tel:+918850281310">+91 88502 81310</a>
-        </p>
-    </footer>
-
+        />
+      </a>
+      <span class="mb-3 mb-md-0 text-body-secondary"
+        >© 2025 Morse Code Translator| Built By <em>Maaz Siddiqui</em></span
+      >
+    </div>
+    <p>
+      <a
+        class="nav-link-footer me-2"
+        href="https://www.linkedin.com/in/siddiqui-maazzz/"
+        >LinkedIn</a
+      >
+      |
+      <a
+        class="nav-link-footer me-2"
+        href="https://the-maaz-portfolio.onrender.com/"
+        >Portfolio</a
+      >
+      |
+      <a class="nav-link-footer me-2" href="https://github.com/maazsiddiqui79"
+        >GitHub</a
+      >
+      |
+      <a class="nav-link-footer" href="tel:+918850281310">+91 88502 81310</a>
+    </p>
+  </footer>
 </html>
 
 <!-- <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
